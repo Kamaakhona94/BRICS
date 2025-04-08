@@ -1,0 +1,14 @@
+async function main() {
+    const initialSupply = ethers.utils.parseUnits("1000000", 18); // 1,000,000 BRICS tokens with 18 decimals
+    const BRICS = await ethers.getContractFactory("BRICS");
+    const bricsToken = await BRICS.deploy(initialSupply);
+    await bricsToken.deployed();
+    console.log("BRICS COIN deployed to:", bricsToken.address);
+}
+
+main()
+    .then(() => process.exit(0))
+    .catch((error) => {
+        console.error(error);
+        process.exit(1);
+    });
