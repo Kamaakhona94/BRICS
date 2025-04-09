@@ -1,0 +1,7 @@
+cd myproject
+git init
+# add all your files.  Users can specify file names or directories instead of '.'
+git add .
+git commit -a -m 'Initial commit'
+git remote add origin ssh://akhona@git.code.sf.net/p/brics/client
+git push -u origin master
