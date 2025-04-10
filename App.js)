@@ -1,0 +1,28 @@
+import React, { useEffect, useState } from 'react';
+import { connectWallet, getBalance } from './web3';
+
+function App() {
+    const [account, setAccount] = useState("");
+    const [balance, setBalance] = useState("");
+
+    useEffect(() => {
+        const init = async () => {
+            await connectWallet();
+            const userAccount = await window.ethereum.request({ method: 'eth_accounts' });
+            setAccount(userAccount[0]);
+            const userBalance = await getBalance(userAccount[0]);
+            setBalance(userBalance);
+        };
+        init();
+    }, []);
+
+    return (
+        <div>
+            <h1>BRICS Token Interface</h1>
+            <p>Account: {account}</p>
+            <p>Balance: {balance}</p>
+        </div>
+    );
+}
+
+export default App;
