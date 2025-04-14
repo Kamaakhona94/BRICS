@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Spinning Coin</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: #f0f0f0;
+      font-family: Arial, sans-serif;
+    }
+
+    .coin {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: gold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #333;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      animation: none;
+      transform-style: preserve-3d;
+    }
+
+    .spin {
+      animation: spin 1s linear;
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotateY(0deg);
+      }
+      to {
+        transform: rotateY(360deg);
+      }
+    }
+
+    #spinButton {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #spinButton:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="coin" id="coin">Coin</div>
+  <button id="spinButton">Spin the Coin</button>
+
+  <script>
+    document.getElementById('spinButton').addEventListener('click', function () {
+      const coin = document.getElementById('coin');
+      coin.classList.add('spin');
+      setTimeout(() => {
+        coin.classList.remove('spin');
+      }, 1000);
+    });
+  </script>
+</body>
+</html>
